@@ -1,3 +1,4 @@
+import AsyncStorage from 'react-native';
 import createDataContext from './createDataContext';
 import tracker from '../api/tracker';
 
@@ -17,6 +18,7 @@ const signup = (dispatch) => {
     // if fails, reflect error message
     try {
       const response = await tracker.post('/signup', { email, password });
+      await AsyncStorage.setItem('token', response.data.token);
       console.log(response.data);
     } catch (err) {
       dispatch({
