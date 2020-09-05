@@ -7,6 +7,7 @@ import { Context } from '../context/AuthContext';
 
 const SigninScreen = () => {
   const { state, signin, clearErrorMessage } = useContext(Context);
+
   return (
     <View style={styles.container}>
       <NavigationEvents onWillFocus={clearErrorMessage} />
