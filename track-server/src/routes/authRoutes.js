@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/signup', async (req, res) => {
   const { email, password } = req.body;
+
   try {
     const user = User({ email, password });
     await user.save();

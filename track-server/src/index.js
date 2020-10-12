@@ -9,13 +9,15 @@ const trackRoutes = require('./routes/trackRoutes');
 const requireAuth = require('./middlewares/requireAuth');
 
 const PW = process.env.PW;
+console.log('PW', PW);
 const app = express();
 
 app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 
-const mongoUri = `mongodb+srv://user:${PW}@cluster0.mckhz.mongodb.net/track?retryWrites=true&w=majority`;
+const mongoUri =
+  'mongodb+srv://user:user@cluster0.mckhz.mongodb.net/track?retryWrites=true&w=majority';
 
 mongoose.connect(mongoUri, {
   useUnifiedTopology: true,
