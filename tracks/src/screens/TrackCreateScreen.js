@@ -1,7 +1,8 @@
+import '../_mockLocation'
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { Text } from 'react-native-elements';
-import { requestPermissionsAsync } from 'expo-location';
+import { requestPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location';
 
 import Map from '../components/Map';
 
@@ -12,6 +13,13 @@ const TrackCreateScreen = () => {
   const startWatching = async () => {
     try {
       const { granted } = await requestPermissionsAsync();
+      await watchPositionAsync({
+        accuracy: Accuracy.BestForNavigation,
+        timerInterval: 1000,
+        distanceInterval: 10
+      }, (location) => {
+        console.log(location);
+      })
       if (!granted) {
         throw new Error('Location permission not granted');
       }
