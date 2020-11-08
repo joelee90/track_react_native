@@ -12,6 +12,7 @@ import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { setNavigator } from './src/navigationRef';
+import { Provider as LocationProvider } from './src/context/LocationContext';
 
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
@@ -33,6 +34,7 @@ const App = createAppContainer(switchNavigator);
 
 export default () => {
   return (
+    <LocationProvider>
     <AuthProvider>
       <App
         ref={(navigator) => {
@@ -40,5 +42,6 @@ export default () => {
         }}
       />
     </AuthProvider>
+    </LocationProvider>
   );
 };
