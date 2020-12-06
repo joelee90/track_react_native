@@ -26,7 +26,7 @@ const startRecording = (dispatch) => () => {
 };
 
 const stopRecording = (dispatch) => () => {
-  dispatch({ type: 'stop_recoding' });
+  dispatch({ type: 'stop_recording' });
 };
 
 const addLocation = (dispatch) => (location, recording) => {
