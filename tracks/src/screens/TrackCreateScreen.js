@@ -7,7 +7,6 @@ import Map from '../components/Map';
 import { Context as LocationContext } from '../context/LocationContext';
 import useLocation from '../hooks/useLocation';
 import TrackForm from '../components/TrackForm';
-import { startGeofencingAsync } from 'expo-location';
 
 const TrackCreateScreen = ({ isFocused }) => {
   const {
@@ -16,7 +15,7 @@ const TrackCreateScreen = ({ isFocused }) => {
   } = useContext(LocationContext);
   const callback = useCallback(
     (location) => {
-      addLocation(location, state.recording);
+      addLocation(location, recording);
     },
     [recording]
   );
